@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FormController } from './form.controller';
 import { FormService } from './form.service';
+import { FormRequest } from './data/dto/form.dto';
+import { Form } from './data/entities/form.entity';
 
 describe('Modulo Gestion de Formularios', () => {
   let formController: FormController;
@@ -26,12 +28,12 @@ describe('Modulo Gestion de Formularios', () => {
   });
   describe('Obtener formulario por ID', () => {
     it('Obtiene un formularios con el ID especificado', () => {
-      expect(formController.getFormById()).toEqual([]);
+      expect(formController.getFormById(2)).toEqual([]);
     });
   });
   describe('Crear formulario ', () => {
     it('Se genera un nuevo formulario', () => {
-      expect(formController.newForm()).toEqual([]);
+      expect(formController.newForm(new Form())).toEqual([]);
     });
   });
 });
